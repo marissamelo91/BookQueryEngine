@@ -11,13 +11,13 @@ import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_ME } from '../utils/queries'
-import { DELETE_BOOK } from '../utils/mutations';
+import { REMOVE_BOOK } from '../utils/mutations';
 
 const SavedBooks = () => {
 
   const { loading, data } = useQuery(GET_ME);
   const userData = data?.me || {};
-  const [deleteBook, { error }] = useMutation(DELETE_BOOK, {
+  const [deleteBook, { error }] = useMutation(REMOVE_BOOK, {
     refetchQueries: [{
       query: GET_ME,
     }]
